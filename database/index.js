@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
-const mongoURI =
-  "mongodb+srv://theboysamm:GqmdLwTwYv4O89PS@cluster0.6ysqy.mongodb.net/gitpractice?retryWrites=true&w=majority";
+require("dotenv").config();
 
+
+   console.log(process.env)
 const connectDB = async () => {
   try {
-    await mongoose.connect(mongoURI, {
+    await mongoose.connect(process.env.MongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,

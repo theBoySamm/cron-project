@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const cron = require("node-cron");
 const fs = require("fs");
 const mongoose = require("mongoose");
@@ -38,7 +39,7 @@ cron.schedule('*/10 * * * * *', async () => {
   data.forEach(async d => {
     await User.findOneAndUpdate({_id: d._id}, {$inc: {age: 1}});
   })
-  console.log('running a task every ten seconds');
+  // console.log('running a task every ten seconds');
 });
 
 app.use('/api/v1/', routes)
